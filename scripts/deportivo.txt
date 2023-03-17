@@ -1,0 +1,30 @@
+/*Misael Octavio Rodríguez Macías A01639786*/
+
+/*Creando base de datos*/
+CREATE DATABASE deportivo;
+
+/*Creando tablas y relaciones*/
+BEGIN;
+
+CREATE TABLE alumno(
+  	DNI INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+    NOMBRE VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE deportes(
+  	DNI INTEGER(2),
+    Nombred VARCHAR(20) NOT NULL,
+    FOREIGN KEY(DNI) REFERENCES alumno(DNI)
+);
+
+INSERT INTO alumno VALUES (1, "Juan Antonio");
+INSERT INTO alumno VALUES (2, "Juan Carlos");
+INSERT INTO alumno VALUES (3, "Jose Octavio");
+INSERT INTO alumno VALUES (4, "Sebastian");
+
+INSERT INTO deportes VALUES (1, "Futbol");
+INSERT INTO deportes VALUES (1, "Voleyball");
+INSERT INTO deportes VALUES (3, "Boxeo");
+INSERT INTO deportes VALUES (4, "Tenis");
+
+COMMIT;

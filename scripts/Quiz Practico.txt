@@ -1,0 +1,29 @@
+BEGIN;
+
+CREATE TABLE Personal(
+	ID INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+    Fcontrato DATE,
+    Nombre VARCHAR(20)
+);
+
+CREATE TABLE Vuelo(
+	NumeroVuelo INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+    personID INTEGER(2),
+    FOREIGN KEY(personID) REFERENCES Personal(ID)
+);
+
+CREATE TABLE Piloto(
+    pilotID INTEGER(2),
+	Licencia VARCHAR(20),
+    HorasVuelo INTEGER(2),
+    FOREIGN KEY(pilotID) REFERENCES Personal(ID)
+);
+
+CREATE TABLE Azafata(
+    azafataID INTEGER(2),
+	Idiomas VARCHAR(30),
+    Experiencia VARCHAR(60),
+    FOREIGN KEY(azafataID) REFERENCES Personal(ID)
+);
+
+COMMIT;

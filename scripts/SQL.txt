@@ -1,0 +1,38 @@
+BEGIN;
+
+CREATE TABLE Publicacion (
+    id INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+    type CHAR(18) NOT NULL
+);
+
+CREATE TABLE Libro(
+    id INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(160) NOT NULL,
+    idPublication INTEGER(2),
+    edicion VARCHAR(16),
+    pubYear INTEGER NOT NULL,
+    FOREIGN KEY(idPublication) REFERENCES publicacion(id)
+);
+
+CREATE TABLE Autor(
+    personId INTEGER(2) PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(50),
+    bookId INTEGER(2) NOT NULL,
+    FOREIGN KEY(bookId) REFERENCES Libro(id)
+);
+
+INSERT INTO publicacion VALUES (1, "Drama");
+INSERT INTO publicacion VALUES (2, "Comedia");
+INSERT INTO publicacion VALUES (3, "Terror");
+INSERT INTO publicacion VALUES (4, "Suspenso");
+INSERT INTO publicacion VALUES (5, "Romance");
+INSERT INTO publicacion VALUES (6, "Infantil");
+
+INSERT INTO Libro VALUES(1, "La dama y el vagabundo", 5, "1ra", 2021);
+INSERT INTO Libro VALUES(2, "Drácula", 3, "2da", 1999);
+INSERT INTO Libro VALUES(3, "La Sirenita", 6, "1ra", 2021);
+
+INSERT INTO Autor VALUES(1, "Pedro Paramo", 3);
+INSERT INTO Autor VALUES(2, "Julia Peraza", 2);
+
+COMMIT;
